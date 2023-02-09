@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-dark font-sans antialiased;
+    @apply bg-dark font-sans antialiased text-light;
   }
 
   h1,
@@ -16,5 +16,25 @@
   h5,
   h6 {
     @apply font-serif antialiased;
+  }
+}
+
+@layer components {
+  .dog-card {
+    @apply rounded-3xl relative overflow-hidden;
+
+    & .dog-content {
+      @apply absolute inset-0 bg-black/50 opacity-0;
+    }
+
+    &:hover {
+      img {
+        @apply scale-125;
+      }
+
+      & .dog-content {
+        @apply opacity-100;
+      }
+    }
   }
 }

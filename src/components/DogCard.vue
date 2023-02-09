@@ -4,6 +4,7 @@ import { computed } from "vue";
 type DogCardProps = {
   image: string;
   breed?: string;
+  showLink?: boolean;
 };
 const props = defineProps<DogCardProps>();
 
@@ -23,7 +24,10 @@ const breedname = computed(() => {
       class="w-full h-full object-cover transition-all"
       lazy
     />
-    <div class="dog-content flex flex-col justify-evenly items-center">
+    <div
+      v-if="showLink"
+      class="dog-content flex flex-col justify-evenly items-center"
+    >
       <h2 class="text-2xl capitalize whitespace-nowrap">
         {{ breedname }}
       </h2>

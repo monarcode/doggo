@@ -2,11 +2,26 @@
 import { useRoute } from "vue-router";
 import useFetchByBreed from "../composables/useByBreed";
 import DogCard from "../components/DogCard.vue";
+import { onMounted, ref, watch, watchEffect } from "vue";
+import axiosInstance from "../lib/axioinstance";
 
 const route = useRoute();
-const breed = route.params.breed;
+const breed = ref(route.params.breed);
+let data = ref([]);
+let isLoading = ref(false);
 
-const { data, isLoading } = useFetchByBreed(breed as string);
+onMounted(async () => {
+  isLoading.value = true;
+
+  const res = await axiosInstance
+    .get(`/breed/${breed.value}/images`)
+    .then((res) => res.data);
+
+  data.value = res.message;
+
+  isLoading.value = false;
+}),
+  console.log(data);
 </script>
 
 <template>

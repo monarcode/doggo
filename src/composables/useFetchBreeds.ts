@@ -3,7 +3,7 @@ import axiosInstance from "../lib/axioinstance";
 
 const useFetchBreeds = () => {
   const fetchBreeds = async () => {
-    return axiosInstance.post("/breeds/list/all").then((res) => res.data);
+    return axiosInstance.get("/breeds/list/all").then((res) => res.data);
   };
 
   return useQuery({
@@ -11,7 +11,6 @@ const useFetchBreeds = () => {
     queryKey: ["fetch-breeds"],
     select: (data) => {
       const breedData = data.message;
-      console.log(breedData);
       return Object.keys(breedData);
     },
   });

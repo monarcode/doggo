@@ -3,7 +3,7 @@ import { computed } from "vue";
 
 type DogCardProps = {
   image: string;
-  breed: string;
+  breed?: string;
 };
 const props = defineProps<DogCardProps>();
 

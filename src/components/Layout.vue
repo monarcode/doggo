@@ -16,7 +16,7 @@ const { data, isLoading } = useFetchBreeds();
         {{ breed }}
       </router-link>
     </div>
-    <router-view></router-view>
+    <router-view :key="$route.path"></router-view>
   </div>
 </template>
 

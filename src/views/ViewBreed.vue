@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import useFetchByBreed from "../composables/useByBreed";
 import DogCard from "../components/DogCard.vue";
-import { onMounted, ref, watch, watchEffect } from "vue";
 import axiosInstance from "../lib/axioinstance";
 
 const route = useRoute();
@@ -20,8 +19,7 @@ onMounted(async () => {
   data.value = res.message;
 
   isLoading.value = false;
-}),
-  console.log(data);
+});
 </script>
 
 <template>

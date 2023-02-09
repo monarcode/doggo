@@ -1,25 +1,12 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import DogCard from "../components/DogCard.vue";
-import axiosInstance from "../lib/axioinstance";
+import useFetchByBreed from "../composables/useByBreed";
 
 const route = useRoute();
-const breed = ref(route.params.breed);
-let data = ref([]);
-let isLoading = ref(false);
+const breed = route.params.breed;
 
-onMounted(async () => {
-  isLoading.value = true;
-
-  const res = await axiosInstance
-    .get(`/breed/${breed.value}/images`)
-    .then((res) => res.data);
-
-  data.value = res.message;
-
-  isLoading.value = false;
-});
+const { data, isLoading } = useFetchByBreed(breed as string);
 </script>
 
 <template>

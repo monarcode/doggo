@@ -1,18 +1,8 @@
 <script lang="ts" setup>
-import { useQuery } from "@tanstack/vue-query";
 import DogCard from "../components/DogCard.vue";
-import axiosInstance from "../lib/axioinstance";
+import useFetchRandom from "../composables/useFetchRandom";
 
-const getRandomDogs = async () => {
-  const res = await axiosInstance.get("/breeds/image/random/100");
-  return res.data;
-};
-
-const { data, isLoading } = useQuery({
-  queryKey: ["random-dogs"],
-  queryFn: getRandomDogs,
-  select: (data) => data.message,
-});
+const { data, isLoading } = useFetchRandom();
 </script>
 
 <template>

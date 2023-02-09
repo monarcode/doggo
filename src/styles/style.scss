@@ -21,7 +21,7 @@
 
 @layer components {
   .dog-card {
-    @apply rounded-3xl relative overflow-hidden;
+    @apply rounded-3xl relative overflow-hidden h-[400px];
 
     & .dog-content {
       @apply absolute inset-0 bg-black/50 opacity-0;

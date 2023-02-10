@@ -22,7 +22,7 @@ const breedname = computed(() => {
       :src="props.image"
       alt="dog"
       class="w-full h-full object-cover transition-all"
-      lazy
+      loading="lazy"
     />
     <div
       v-if="showLink"
